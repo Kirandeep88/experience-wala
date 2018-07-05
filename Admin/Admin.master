@@ -1,0 +1,275 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Admin_Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css" />
+
+    <!-- Vendor CSS -->
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css" />
+
+    <!-- Vendor CSS -->
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+
+
+    <link href="../assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../assets/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" />
+
+    <!-- Specific Page Vendor CSS -->
+    <link href="../assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+    <link href="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" rel="stylesheet" />
+
+
+
+    <link href="../assets/vendor/jquery-datatables-bs3/assets/css/datatables.css" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="../assets/stylesheets/theme.css" rel="stylesheet" />
+
+    <!-- Skin CSS -->
+    <link href="../assets/stylesheets/skins/default.css" rel="stylesheet" />
+
+    <!-- Theme Custom CSS -->
+    <link href="../assets/stylesheets/theme-custom.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <section class="body">
+        <header class="header">
+            <div class="logo-container">
+                <a href="../" class="logo">
+                    <img src="assets/images/logo.png" height="35" alt="Porto Admin" />
+                </a>
+                <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+                    <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div id="userbox" class="userbox">
+                    <a href="#" data-toggle="dropdown">
+                        <figure class="profile-picture">
+                            <img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="assets/images/!logged-user.jpg" />
+                        </figure>
+                        <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+
+                            <span class="name">Welcome Admin</span>
+                            <span class="role">Administrator</span>
+
+                        </div>
+
+                        <i class="fa custom-caret"></i>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <ul class="list-unstyled">
+                            <li class="divider"></li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" href="ChangePassword.aspx"><i class="fa fa-user"></i>Change Password</a>
+                            </li>
+                            <li>
+                                <a role="menuitem" tabindex="-1" href="LogOut.aspx" data-lock-screen="true"><i class="fa fa-lock"></i>Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end: search & user box -->
+        </header>
+
+
+        <div class="inner-wrapper">
+
+            <aside id="sidebar-left" class="sidebar-left">
+
+                <div class="sidebar-header">
+                    <div class="sidebar-title">
+                        Navigation
+                    </div>
+                    <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                        <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                    </div>
+                </div>
+
+                <div class="nano">
+                    <div class="nano-content">
+                        <nav id="menu" class="nav-main" role="navigation">
+                            <ul class="nav nav-main">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-home" aria-hidden="true"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="ShowCategory.aspx">
+                                        <i class="fa fa-building" aria-hidden="true"></i>
+                                        <span>Category</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="ShowProduct.aspx">
+                                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                        <span>Products</span>
+                                    </a>
+                                </li>
+
+                                 <li>
+                                    <a href="Show_Order.aspx">
+                                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                        <span>Show Order Details</span>
+                                    </a>
+                                </li>
+
+
+                                   <li>
+                                    <a href="Banners.aspx">
+                                        <i class="fa fa-image" aria-hidden="true"></i>
+                                        <span> Banners</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+            <section role="main" class="content-body">
+
+                <form id="form1" runat="server">
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <aside id="sidebar-right" class="sidebar-right">
+            <div class="nano">
+                <div class="nano-content">
+                    <a href="#" class="mobile-close visible-xs">Collapse <i class="fa fa-chevron-right"></i>
+                    </a>
+
+                    <div class="sidebar-right-wrapper">
+
+                        <div class="sidebar-widget widget-calendar">
+                            <h6>Upcoming Tasks</h6>
+                            <div data-plugin-datepicker data-plugin-skin="dark"></div>
+
+                            <ul>
+                                <li>
+                                    <time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+                                    <span>Company Meeting</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-widget widget-friends">
+                            <h6>Friends</h6>
+                            <ul>
+                                <li class="status-online">
+                                    <figure class="profile-picture">
+                                        <img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+                                    </figure>
+                                    <div class="profile-info">
+                                        <span class="name">Joseph Doe Junior</span>
+                                        <span class="title">Hey, how are you?</span>
+                                    </div>
+                                </li>
+                                <li class="status-online">
+                                    <figure class="profile-picture">
+                                        <img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+                                    </figure>
+                                    <div class="profile-info">
+                                        <span class="name">Joseph Doe Junior</span>
+                                        <span class="title">Hey, how are you?</span>
+                                    </div>
+                                </li>
+                                <li class="status-offline">
+                                    <figure class="profile-picture">
+                                        <img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+                                    </figure>
+                                    <div class="profile-info">
+                                        <span class="name">Joseph Doe Junior</span>
+                                        <span class="title">Hey, how are you?</span>
+                                    </div>
+                                </li>
+                                <li class="status-offline">
+                                    <figure class="profile-picture">
+                                        <img src="assets/images/!sample-user.jpg" alt="Joseph Doe" class="img-circle">
+                                    </figure>
+                                    <div class="profile-info">
+                                        <span class="name">Joseph Doe Junior</span>
+                                        <span class="title">Hey, how are you?</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </section>
+
+
+    <script src="../assets/vendor/jquery/jquery.js"></script>
+    <script src="../assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+
+    <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/vendor/nanoscroller/nanoscroller.js"></script>
+    <script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="../assets/vendor/magnific-popup/magnific-popup.js"></script>
+
+    <!-- Specific Page Vendor -->
+    <script src="../assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+    <script src="../assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
+    <script src="../assets/vendor/jquery-appear/jquery.appear.js"></script>
+    <script src="../assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+
+    <script src="../assets/vendor/jquery-datatables/media/js/jquery.dataTables.js"></script>
+    <script src="../assets/vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script src="../assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
+
+    <script src="../assets/javascripts/tables/examples.datatables.default.js"></script>
+    <script src="../assets/javascripts/tables/examples.datatables.row.with.details.js"></script>
+    <script src="../assets/javascripts/tables/examples.datatables.tabletools.js"></script>
+
+
+    <!--Validation-->
+    <script src="../assets/vendor/jquery-validation/jquery.validate.js"></script>
+    <script src="../assets/javascripts/forms/examples.validation.js"></script>
+
+    <script src="../assets/vendor/ckeditor/ckeditor.js"></script>
+
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="../assets/javascripts/theme.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="../assets/javascripts/theme.custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="../assets/javascripts/theme.init.js"></script>
+
+    <!-- Examples -->
+    <script src="../assets/javascripts/dashboard/examples.dashboard.js"></script>
+    <script src="../assets/javascripts/ui-elements/examples.modals.js"></script>
+
+</body>
+</html>

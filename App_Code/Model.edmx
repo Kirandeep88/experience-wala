@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="parminder63033_testingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tb_banners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image1" Type="varchar(max)" />
+          <Property Name="Image2" Type="varchar(max)" />
+          <Property Name="Image3" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Tb_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat_name" Type="varchar" MaxLength="50" />
+          <Property Name="Unit" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tb_login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tb_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Zip_Code" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'parminder63033_testing.parminder6303.Tb_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tb_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_name" Type="varchar" MaxLength="50" />
+          <Property Name="Product_Dec" Type="varchar(max)" />
+          <Property Name="Product_Unit" Type="varchar" MaxLength="50" />
+          <Property Name="Product_Price" Type="varchar" MaxLength="50" />
+          <Property Name="Product_Image" Type="varchar(max)" Nullable="false" />
+          <Property Name="Product_Image1" Type="varchar(max)" />
+          <Property Name="Product_Image2" Type="varchar(max)" />
+          <Property Name="Product_Image3" Type="varchar(max)" />
+          <Property Name="Product_Image4" Type="varchar(max)" />
+          <Property Name="Cat_id" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Pro_date" Type="datetime" />
+          <Property Name="Our_latest_product" Type="bit" />
+          <Property Name="HomePage" Type="bit" />
+          <Property Name="OurBestProduct" Type="bit" />
+          <Property Name="HomePage2" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tb_Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Phone_No" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tb_Signin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Usertype" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Tb_Product_Tb_Category">
+          <End Role="Tb_Category" Type="Self.Tb_Category" Multiplicity="0..1" />
+          <End Role="Tb_Product" Type="Self.Tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tb_Product">
+              <PropertyRef Name="Cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="parminder63033_testingModelStoreContainer">
+          <EntitySet Name="Tb_banners" EntityType="Self.Tb_banners" Schema="parminder6303" store:Type="Tables" />
+          <EntitySet Name="Tb_Category" EntityType="Self.Tb_Category" Schema="parminder6303" store:Type="Tables" />
+          <EntitySet Name="Tb_login" EntityType="Self.Tb_login" Schema="parminder6303" store:Type="Tables" />
+          <EntitySet Name="Tb_Order" EntityType="Self.Tb_Order" Schema="parminder6303" store:Type="Tables" />
+          <EntitySet Name="Tb_Register" EntityType="Self.Tb_Register" Schema="parminder6303" store:Type="Tables" />
+          <EntitySet Name="Tb_Signin" EntityType="Self.Tb_Signin" Schema="parminder6303" store:Type="Tables" />
+          <EntitySet Name="Tb_Product" EntityType="Self.Tb_Product" store:Type="Tables" store:Schema="parminder6303">
+            <DefiningQuery>SELECT 
+[Tb_Product].[Id] AS [Id], 
+[Tb_Product].[Product_name] AS [Product_name], 
+[Tb_Product].[Product_Dec] AS [Product_Dec], 
+[Tb_Product].[Product_Unit] AS [Product_Unit], 
+[Tb_Product].[Product_Price] AS [Product_Price], 
+[Tb_Product].[Product_Image] AS [Product_Image], 
+[Tb_Product].[Product_Image1] AS [Product_Image1], 
+[Tb_Product].[Product_Image2] AS [Product_Image2], 
+[Tb_Product].[Product_Image3] AS [Product_Image3], 
+[Tb_Product].[Product_Image4] AS [Product_Image4], 
+[Tb_Product].[Cat_id] AS [Cat_id], 
+[Tb_Product].[Status] AS [Status], 
+[Tb_Product].[Pro_date] AS [Pro_date], 
+[Tb_Product].[Our_latest_product] AS [Our_latest_product], 
+[Tb_Product].[HomePage] AS [HomePage], 
+[Tb_Product].[OurBestProduct] AS [OurBestProduct], 
+[Tb_Product].[HomePage2] AS [HomePage2]
+FROM [parminder6303].[Tb_Product] AS [Tb_Product]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Tb_Product_Tb_Category" Association="Self.FK_Tb_Product_Tb_Category">
+            <End Role="Tb_Category" EntitySet="Tb_Category" />
+            <End Role="Tb_Product" EntitySet="Tb_Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="parminder63033_testingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tb_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Tb_Product" Relationship="parminder63033_testingModel.FK_Tb_Product_Tb_Category" FromRole="Tb_Category" ToRole="Tb_Product" />
+        </EntityType>
+        <EntityType Name="Tb_login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="GadgetitemsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Category" EntityType="Self.Tb_Category" />
+          <EntitySet Name="Tb_login" EntityType="Self.Tb_login" />
+          <EntitySet Name="Tb_Product" EntityType="parminder63033_testingModel.Tb_Product" />
+          <AssociationSet Name="FK_Tb_Product_Tb_Category" Association="parminder63033_testingModel.FK_Tb_Product_Tb_Category">
+            <End Role="Tb_Category" EntitySet="Tb_Category" />
+            <End Role="Tb_Product" EntitySet="Tb_Product" />
+          </AssociationSet>
+          <EntitySet Name="Tb_Order" EntityType="parminder63033_testingModel.Tb_Order" />
+          <EntitySet Name="Tb_Register" EntityType="parminder63033_testingModel.Tb_Register" />
+          <EntitySet Name="Tb_Signin" EntityType="parminder63033_testingModel.Tb_Signin" />
+          <EntitySet Name="Tb_banners" EntityType="parminder63033_testingModel.Tb_banners" />
+        </EntityContainer>
+        <EntityType Name="Tb_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Dec" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Product_Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cat_id" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Pro_date" Type="DateTime" Precision="3" />
+          <Property Name="Our_latest_product" Type="Boolean" />
+          <Property Name="HomePage" Type="Boolean" />
+          <Property Name="OurBestProduct" Type="Boolean" />
+          <Property Name="HomePage2" Type="Boolean" />
+          <NavigationProperty Name="Tb_Category" Relationship="parminder63033_testingModel.FK_Tb_Product_Tb_Category" FromRole="Tb_Product" ToRole="Tb_Category" />
+        </EntityType>
+        <Association Name="FK_Tb_Product_Tb_Category">
+          <End Type="parminder63033_testingModel.Tb_Category" Role="Tb_Category" Multiplicity="0..1" />
+          <End Type="parminder63033_testingModel.Tb_Product" Role="Tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tb_Product">
+              <PropertyRef Name="Cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tb_Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Zip_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tb_Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tb_Signin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usertype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Tb_banners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="parminder63033_testingModelStoreContainer" CdmEntityContainer="GadgetitemsEntities">
+          <EntitySetMapping Name="Tb_Category">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_Category">
+              <MappingFragment StoreEntitySet="Tb_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cat_name" ColumnName="Cat_name" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_login">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_login">
+              <MappingFragment StoreEntitySet="Tb_login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Product">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_Product">
+              <MappingFragment StoreEntitySet="Tb_Product">
+                <ScalarProperty Name="HomePage2" ColumnName="HomePage2" />
+                <ScalarProperty Name="OurBestProduct" ColumnName="OurBestProduct" />
+                <ScalarProperty Name="HomePage" ColumnName="HomePage" />
+                <ScalarProperty Name="Our_latest_product" ColumnName="Our_latest_product" />
+                <ScalarProperty Name="Pro_date" ColumnName="Pro_date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Cat_id" ColumnName="Cat_id" />
+                <ScalarProperty Name="Product_Image4" ColumnName="Product_Image4" />
+                <ScalarProperty Name="Product_Image3" ColumnName="Product_Image3" />
+                <ScalarProperty Name="Product_Image2" ColumnName="Product_Image2" />
+                <ScalarProperty Name="Product_Image1" ColumnName="Product_Image1" />
+                <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
+                <ScalarProperty Name="Product_Price" ColumnName="Product_Price" />
+                <ScalarProperty Name="Product_Unit" ColumnName="Product_Unit" />
+                <ScalarProperty Name="Product_Dec" ColumnName="Product_Dec" />
+                <ScalarProperty Name="Product_name" ColumnName="Product_name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Order">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_Order">
+              <MappingFragment StoreEntitySet="Tb_Order">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Zip_Code" ColumnName="Zip_Code" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Register">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_Register">
+              <MappingFragment StoreEntitySet="Tb_Register">
+                <ScalarProperty Name="Phone_No" ColumnName="Phone_No" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Signin">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_Signin">
+              <MappingFragment StoreEntitySet="Tb_Signin">
+                <ScalarProperty Name="Usertype" ColumnName="Usertype" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_banners">
+            <EntityTypeMapping TypeName="parminder63033_testingModel.Tb_banners">
+              <MappingFragment StoreEntitySet="Tb_banners">
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
